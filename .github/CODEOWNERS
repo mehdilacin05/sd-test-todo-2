@@ -1,0 +1,15 @@
+# Ziel: .github/CODEOWNERS. Alles, was das Tor bildet oder nach prod geht, gibt ein Mensch frei.
+# Wirkt nur mit der Ruleset-Regel „Require review from Code Owners“ (privat ab GitHub Team).
+# <kunden-org>/maintainer = Team mit Schreibrecht, ohne den Agenten.
+/.github/                 @<kunden-org>/maintainer
+/Makefile                 @<kunden-org>/maintainer
+Dockerfile*               @<kunden-org>/maintainer
+/compose*.yml             @<kunden-org>/maintainer
+/supabase/migrations/     @<kunden-org>/maintainer
+/.nvmrc                   @<kunden-org>/maintainer
+/eslint.config.*          @<kunden-org>/maintainer
+/tsconfig*.json           @<kunden-org>/maintainer
+/vitest.config.*          @<kunden-org>/maintainer
+/playwright.config.*      @<kunden-org>/maintainer
+/.gitleaks.toml           @<kunden-org>/maintainer
+/.trivyignore             @<kunden-org>/maintainer
