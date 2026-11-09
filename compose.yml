@@ -1,0 +1,24 @@
+services:
+  app:
+    image: ${APP_IMAGE:?APP_IMAGE must specify an immutable image digest}
+    restart: unless-stopped
+    environment:
+      HEALTH_DATABASE_URL: ${HEALTH_DATABASE_URL:?Set a least-privileged database connection at runtime}
+    expose:
+      - "3000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
