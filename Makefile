@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 .DEFAULT_GOAL := check
-.PHONY: check secrets format lint typecheck test build audit image
+.PHONY: check secrets format lint typecheck test build audit image health-test
 
 check: secrets format lint typecheck test build audit
 
@@ -29,3 +29,6 @@ audit:
 
 image:
 	docker build --build-arg GIT_SHA=$$(git rev-parse HEAD) -t sd-test-todo-2:local .
+
+health-test: image
+	bash scripts/health-test.sh
