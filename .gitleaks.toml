@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Generated build output and installed dependencies are not source. Image scanning is separate."
+paths = ['''(^|/)\.next/''', '''(^|/)node_modules/''']
